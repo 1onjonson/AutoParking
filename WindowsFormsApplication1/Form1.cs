@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using parking;
 
 namespace WindowsFormsApplication1
 {
@@ -15,6 +16,29 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+        }
+        AutoParkingDto GetModelFromUI()
+        {
+            return new AutoParkingDto()
+            {
+                Filled = dateTimePicker1.Value,
+                TimeOut = dateTimePicker2.Value,
+                AutoName = textBox1.Text,
+                ParkingNumber = (int)numericUpDown1.Value,
+                AutoNumber = textBox2.Text,
+                Price = numericUpDown2.Value,
+            };
+        }
+        private void SetModelToUI(AutoParkingDto dto)
+        {
+            //button4.Enabled = false;
+            dateTimePicker1.Value = dto.Filled;
+            dateTimePicker2.Value = dto.TimeOut;
+            textBox1.Text = dto.AutoName;
+            textBox2.Text = dto.AutoNumber;
+            numericUpDown2.Value = dto.Price;
+            numericUpDown1.Value = dto.ParkingNumber;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,6 +71,28 @@ namespace WindowsFormsApplication1
         {
             var form = new OwnerInfo();
             var res = form.ShowDialog(this);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var sfd = new SaveFileDialog() { Filter = "Файлы заказов|*.prkng" };
+            var result = sfd.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                var dto = GetModelFromUI();
+                AutoParkingHelper.WriteToFile(sfd.FileName, dto);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog() { Filter = "Файл заказа|*.prkng" };
+            var result = ofd.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                var dto = AutoParkingHelper.LoadFromFile(ofd.FileName);
+                SetModelToUI(dto);
+            }
         }
     }
 }

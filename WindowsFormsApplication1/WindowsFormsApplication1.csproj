@@ -102,6 +102,10 @@
       <Project>{d134f94b-0622-4907-a471-90b5320e7638}</Project>
       <Name>parking</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SerializationTest\SerializationTest.csproj">
+      <Project>{40b10815-dec2-45f7-908f-989145d73d0d}</Project>
+      <Name>SerializationTest</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
