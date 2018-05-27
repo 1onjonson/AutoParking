@@ -26,7 +26,7 @@ namespace parking
         ///<summary>
         ///Тип Кузова
         ///</summary>
-        public Body BodyType { set; get; }
+        public Body Type { set; get; }
         ///<summary>
         ///Место на парковке
         ///</summary>
@@ -40,13 +40,24 @@ namespace parking
         ///</summary>
         public DateTime TimeOut { set; get; }
         ///<summary>
-        ///Владелец
+        ///серия паспорта
         ///</summary>
-        public OwnerDto Owner { set; get; }
+        public string Series { set; get; }
         ///<summary>
-        ///паспортные данные
+        ///номер паспорта
         ///</summary>
-        public PassportDto Passport { set; get; }
+        public string Number { set; get; }
+        ///<summary>
+        ///ФИО владельца автомобиля
+        ///</summary>
+        public string FullName { set; get; }
+        ///<summary>
+        ///
+        ///</summary>
+        //////<summary>
+        ///Контактный номер
+        ///</summary>
+        public string PhoneNumber { set; get; }
     }
     /// <summary>
     /// тип кузова
@@ -61,36 +72,5 @@ namespace parking
         Пикап,
         Минивэн,
         Кроссовер
-    }
-    /// <summary>
-    /// информация о владельце
-    /// </summary>
-    public class OwnerDto
-    {
-        ///<summary>
-        ///ФИО владельца автомобиля
-        ///</summary>
-        public string FullName { set; get; }
-        ///<summary>
-        ///
-        ///</summary>
-        //////<summary>
-        ///Контактный номер
-        ///</summary>
-        public string PhoneNumber { set; get; }
-    }
-    /// <summary>
-    /// информация о паспорте владельца
-    /// </summary>
-    public class PassportDto
-    {
-        ///<summary>
-        ///серия паспорта
-        ///</summary>
-        public string Series { set; get; }
-        ///<summary>
-        ///номер паспорта
-        ///</summary>
-        public string Number { set; get; }
-    }
+    }   
 }

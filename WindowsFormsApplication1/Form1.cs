@@ -27,53 +27,60 @@ namespace WindowsFormsApplication1
                 ParkingNumber = (int)numericUpDown1.Value,
                 AutoNumber = textBox2.Text,
                 Price = numericUpDown2.Value,
+                Series = textBox5.Text,
+                Number = textBox3.Text,
+                FullName = textBox6.Text,
+                PhoneNumber = textBox4.Text,
+                Type = (Body)comboBox1.SelectedIndex
             };
         }
+   
         private void SetModelToUI(AutoParkingDto dto)
         {
-            //button4.Enabled = false;
             dateTimePicker1.Value = dto.Filled;
             dateTimePicker2.Value = dto.TimeOut;
             textBox1.Text = dto.AutoName;
             textBox2.Text = dto.AutoNumber;
             numericUpDown2.Value = dto.Price;
             numericUpDown1.Value = dto.ParkingNumber;
-
+            textBox6.Text = dto.FullName;
+            textBox4.Text = dto.PhoneNumber;
+            textBox5.Text = dto.Series;
+            textBox3.Text = dto.Number;
+            comboBox1.SelectedIndex = (int)dto.Type;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
         {
+            char number = e.KeyChar;
 
+            if (!Char.IsDigit(number)&&number != 8)
+            {
+                e.Handled = true;
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
+            char number = e.KeyChar;
 
+            if (!Char.IsDigit(number)&& number != 8)
+            {
+                e.Handled = true;
+            }
         }
 
-        public void FIO_TextChanged(object sender, EventArgs e)
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
+            char number = e.KeyChar;
 
+            if (!Char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
+            }
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var form = new BodyType();
-            var res = form.ShowDialog(this);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var form = new OwnerInfo();
-            var res = form.ShowDialog(this);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
             var sfd = new SaveFileDialog() { Filter = "Файлы заказов|*.prkng" };
             var result = sfd.ShowDialog(this);
@@ -84,7 +91,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             var ofd = new OpenFileDialog() { Filter = "Файл заказа|*.prkng" };
             var result = ofd.ShowDialog(this);
@@ -93,6 +100,23 @@ namespace WindowsFormsApplication1
                 var dto = AutoParkingHelper.LoadFromFile(ofd.FileName);
                 SetModelToUI(dto);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 frm1 = new Form1();
+            this.Hide();
+            frm1.Show(this);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

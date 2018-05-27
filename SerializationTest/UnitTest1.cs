@@ -16,21 +16,11 @@ namespace SerializationTest
             {
                 Filled = DateTime.Now,
                 AutoName = "Nissan X-Trail",
-                BodyType = Body.Кроссовер,
+                Type = Body.Кроссовер,
                 AutoNumber = "В339КУ",
                 ParkingNumber = 9,
                 TimeOut = DateTime.Now,
                 Price = 1499,
-                Owner = new OwnerDto
-                {
-                    FullName = "Slastnikov Kirill",
-                    PhoneNumber = "88005553535"
-                },
-                Passport = new PassportDto
-                {
-                    Series = "6688",
-                    Number = "522433"
-                }
 
             };
             var tempFileName = Path.GetTempFileName();
