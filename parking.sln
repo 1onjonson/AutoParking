@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parking", "parking\parking.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializationTest", "SerializationTest\SerializationTest.csproj", "{40B10815-DEC2-45F7-908F-989145D73D0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{398A24D2-9441-4EFB-9130-9B0C8E288ED3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoParkingUI", "WindowsFormsApplication1\AutoParkingUI.csproj", "{398A24D2-9441-4EFB-9130-9B0C8E288ED3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicGenerator", "LicGenerator\LicGenerator.csproj", "{CCAB6A4C-C198-4291-8E20-9B4EA144D6E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{398A24D2-9441-4EFB-9130-9B0C8E288ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{398A24D2-9441-4EFB-9130-9B0C8E288ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{398A24D2-9441-4EFB-9130-9B0C8E288ED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCAB6A4C-C198-4291-8E20-9B4EA144D6E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCAB6A4C-C198-4291-8E20-9B4EA144D6E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCAB6A4C-C198-4291-8E20-9B4EA144D6E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCAB6A4C-C198-4291-8E20-9B4EA144D6E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

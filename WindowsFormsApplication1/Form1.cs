@@ -111,7 +111,17 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            var lv = new LicenceValidator();
+            if (!lv.HasLicense)
+            {
+                MessageBox.Show("Лицензия не найдена. Приобретите лицензию у владельца ПО.");
+                Application.Exit();
+            }
+            if (!lv.IsValid)
+            {
+                MessageBox.Show("Лицензия просрочена. Приобретите лицензию у владельца ПО.");
+                Application.Exit();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
