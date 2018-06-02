@@ -1,0 +1,14 @@
+﻿@model parking.AutoParkingDto
+
+@{
+    ViewBag.Title = "Print";
+}
+
+<h2>Print</h2>
+
+<div><p>Start parking</p><p>@Model.Filled</p></div>
+<div><p>Stop parking</p><p>@Model.TimeOut</p></div>
+<div><p>Car name</p><p>@Model.AutoName</p></div>
+<div><p>Car number</p><p>@Model.AutoNumber</p></div>
+<div><p>Parking number</p><p>@Model.ParkingNumber</p></div>
+<div><p>Price</p><p>@Model.Price rubles</p></div>

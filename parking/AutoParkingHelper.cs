@@ -21,5 +21,9 @@ namespace parking
                 return (AutoParkingDto)Xs.Deserialize(fileStream);
             }
         }
+        public static AutoParkingDto LoadFromStream(Stream file)
+        {
+            return (AutoParkingDto)Xs.Deserialize(file);
+        }
     }
 }

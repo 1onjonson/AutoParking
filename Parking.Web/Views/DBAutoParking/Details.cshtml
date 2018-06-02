@@ -1,0 +1,65 @@
+﻿@model Parking.Web.Models.AutoParkingDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DbRideRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Filled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Filled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeOut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AutoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AutoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AutoNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AutoNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkingNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParkingNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
