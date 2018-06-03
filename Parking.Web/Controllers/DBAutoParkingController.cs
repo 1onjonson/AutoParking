@@ -6,6 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.SqlClient;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System.IO;
+using System.Web.Hosting;
 
 namespace Parking.Web.Controllers
 {
@@ -109,6 +114,47 @@ namespace Parking.Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Download(int? id)
+        {
+            var ctx = new ApplicationDbContext();
+            var g = ctx.Autoparking.Find(id);
+
+            ExcelPackage pkg;
+            using (var stream = System.IO.File.OpenRead(HostingEnvironment.ApplicationPhysicalPath + "template.xlsx"))
+            {
+                pkg = new ExcelPackage(stream);
+                stream.Dispose();
+            }
+
+            var worksheet = pkg.Workbook.Worksheets[1];
+            worksheet.Name = "Информация о парковке";
+
+            worksheet.Cells[2, 3].Value = g.Filled.ToString();
+            worksheet.Cells[3, 3].Value = g.TimeOut.ToString();
+            worksheet.Cells[4, 3].Value = g.AutoName;
+            worksheet.Cells[5, 3].Value = g.AutoNumber;
+            worksheet.Cells[6, 3].Value = g.ParkingNumber;
+            worksheet.Cells[8, 3].Value = g.Price;
+            using (var cells = worksheet.Cells[2, 2, 6, 3])
+            {
+                cells.Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                cells.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                cells.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                cells.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+            }
+            using (var cells = worksheet.Cells[8, 2, 8, 3])
+            {
+                cells.Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                cells.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                cells.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                cells.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+            }
+            var ms = new MemoryStream();
+            pkg.SaveAs(ms);
+
+            return File(ms.ToArray(), "application/ooxml", ((g.FullName ?? "Без Названия") + g.Filled.ToString()).Replace(" ", "") + ".xlsx");
         }
     }
 }
